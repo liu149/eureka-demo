@@ -1,10 +1,17 @@
 pipeline {
-    agent { docker 'maven:3.3.3' }
+    agent { docker 'gradle:jdk8' }
     stages {
         stage('build') {
             steps {
-                sh 'mvn --version'
+                sh 'gradle build'
             }
         }
+
+        stage('publish') {
+            steps {
+                sh 'gradle publish'
+            }
+        }
+
     }
 }

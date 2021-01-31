@@ -35,7 +35,7 @@ distributions {
 publishing {
 	publications {
 		zip(MavenPublication) {
-			artifactId 'aaa-bbb'
+			artifactId 'eureka-demo'
 			artifact source: distZip, extension: 'zip'
 		}
 
@@ -45,10 +45,10 @@ publishing {
 		maven {
 			name 'release'
 			credentials {
-				username 'admin'
-				password 'admin123'
+				username 'UeNAlf'
+				password 'C3P4NBghkI'
 			}
-			url 'http://42.192.143.36:8081/repository/maven-releases/'
+			url 'https://repo.rdc.aliyun.com/repository/136689-release-6zHeY2/'
 		}
 	}
 }
