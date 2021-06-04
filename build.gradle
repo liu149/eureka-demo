@@ -3,6 +3,7 @@ plugins {
 	id 'application'
 	id 'maven-publish'
 	id 'maven'
+	id 'org.springframework.boot' version '2.1.8.RELEASE'
 }
 
 application {
@@ -10,11 +11,22 @@ application {
 }
 
 group = 'com.example'
-version = '0.0.1-SNAPSHOT-2'
+version = '1.0'
 sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
+}
+
+jar {
+	manifest {
+		attributes(
+			'Main-Class' : 'com.example.eurekademo.EurekaDemoApplication',
+		)
+	}
+	from {
+		configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+	}
 }
 
 dependencies {
