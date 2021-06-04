@@ -22,8 +22,6 @@ org.springframework.boot
 
 通过Dockerfile构建image
 
-cd eureka-demo/docker
-
 ```shell
 cd eureka-demo/docker
 docker build -t eureka:v1.0 .

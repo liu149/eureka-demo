@@ -7,7 +7,7 @@ plugins {
 }
 
 application {
-	mainClass='com.example.eurekademo.EurekaDemoApplication'
+	mainClass='com.example.mall.EurekaDemoApplication'
 }
 
 group = 'com.example'
