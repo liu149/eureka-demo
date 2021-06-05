@@ -29,3 +29,5 @@ docker run -d --name eureka-v1.0 -p 8000:8000 eureka:v1.0
 ```
 
 *访问localhost:8000*
+
+也可以通过docker-compose -d up启动
