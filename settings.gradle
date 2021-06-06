@@ -1,1 +1,4 @@
 rootProject.name = 'mall'
+include 'mall-nacos'
+include 'mall-eureka'
+
