@@ -1,14 +1,7 @@
 plugins {
-    id 'java'
     id 'application'
-    id 'maven-publish'
-    id 'maven'
     id 'org.springframework.boot' version '2.1.8.RELEASE'
 }
-
-
-group 'com.example'
-version '1.0'
 
 publishing {
     distributions {
@@ -26,40 +19,24 @@ publishing {
 publishing {
     publications {
         zip(MavenPublication) {
-            artifactId 'eureka-demo'
+            artifactId applicationName
             artifact source: distZip, extension: 'zip'
-        }
-
-    }
-
-    repositories {
-        maven {
-            name 'release'
-            credentials {
-                username 'UeNAlf'
-                password 'C3P4NBghkI'
-            }
-            url 'https://repo.rdc.aliyun.com/repository/136689-release-6zHeY2/'
         }
     }
 }
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-web:2.1.8.RELEASE'
-    compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:2.1.3.RELEASE'
+    compile "org.springframework.boot:spring-boot-starter-web:${springCloudVersion}"
+    compile "org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${springCloudVersion}"
 }
 
 jar {
     manifest {
         attributes(
-                'Main-Class' : 'com.mall.eureka.EurekaDemoApplication'
+            'Main-Class' : 'com.mall.eureka.EurekaDemoApplication'
         )
     }
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
-
-build.dependsOn distZip
-publish.dependsOn build
-

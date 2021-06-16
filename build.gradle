@@ -1,15 +1,16 @@
 subprojects {
-	repositories {
-		mavenCentral()
-	}
+	ext.gradlePath = (path - ':').split(':').collect { '..' }.join('/')
 }
 
-//application {
-//	mainClass='com.example.mall.EurekaDemoApplication'
-//}
+configure(subprojects.findAll()) {
+	apply plugin: 'java'
+	apply plugin: 'application'
+	apply plugin: 'maven'
 
-//group = 'com.example'
-//version = '1.0'
-//sourceCompatibility = '1.8'
+	apply from: ext.gradlePath + '/gradle/upload.gradle'
+}
 
+ext {
+	springCloudVersion = '2.2.8.RELEASE'
+}
 

@@ -1,0 +1,25 @@
+apply plugin: 'maven-publish'
+
+
+publishing {
+    repositories {
+        maven {
+			println(project.version)
+			def releaseRepo = 'https://repo.rdc.aliyun.com/repository/136689-release-6zHeY2'
+			def snapshotRepo = 'https://repo.rdc.aliyun.com/repository/136689-snapshot-ldTmtg'
+            credentials {
+                username 'UeNAlf'
+                password 'C3P4NBghkI'
+            }
+            url version.toString().endsWith('SNAPSHOT') ? snapshotRepo : releaseRepo
+        }
+    }
+}
+
+allprojects {
+    group "com.mall"
+
+    repositories {
+		mavenCentral()
+	}
+}
